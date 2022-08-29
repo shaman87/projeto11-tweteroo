@@ -11,8 +11,12 @@ const tweetsList = [];
 app.post("/sign-up", (request, response) => {
     const { username, avatar } = request.body;
 
-    usersList.push({ username, avatar });
-    response.send(usersList);
+    usersList.push({
+        username, 
+        avatar 
+    });
+
+    response.send("OK");
 });
 
 app.post("/tweets", (request, response) => {
@@ -20,7 +24,13 @@ app.post("/tweets", (request, response) => {
     
     if(usersList.length > 0) {
         const avatar = usersList.find(value => value.username === username).avatar;
-        tweetsList.push({ username, avatar, tweet });
+        
+        tweetsList.push({
+            username, 
+            avatar, 
+            tweet 
+        });
+
         response.send("OK");
     }
 
